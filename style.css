@@ -1,0 +1,92 @@
+@font-face {
+    font-family: serif-bold;
+    src: url(assets/PTSerif-Bold.ttf);
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: serif-regular;
+    src: url(assets/PTSerif-Regular.ttf);
+    font-weight: normal;
+}
+
+:root{
+    --default-font: serif-regular;
+    --bold-font: serif-bold;
+    --primary-color: rgb(112, 41, 99);
+    --secondary-color: rgb(193, 185, 217);
+    --accent-color: rgb(230, 230, 250);
+    --dark-font-color: rgb(112, 41, 99);
+    --light-font-color: white;
+}
+
+body{
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 15% 80% 5%;
+}
+
+.header{
+    background-color: var(--primary-color);
+    color: var(--light-font-color);
+    font-family: var(--bold-font);
+    font-size: 25px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+main{
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.display{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 250px));
+    gap: 20px;
+}
+
+.book-card-container{
+    background-color: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    box-shadow: 5px 8px var(--accent-color);
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+button{
+    margin: 10px;
+    background-color: var(--primary-color);
+    height: 30px;
+    width: 140px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    color: var(--light-font-color);
+}
+
+.form{
+    display: none;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    width: 300px;
+    padding: 10px;
+}
+
+.book-details{
+    display: flex;
+    padding: 5px;
+}
+
+footer{
+    background-color: var(--primary-color);
+}

@@ -4,8 +4,38 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>JS-object-practcice</title>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <div class="header">
+            <div class="logo">Amethyne Library</div>
+        </div>
+        <main>
+            <button id="new-book" onclick="openForm()"> + NEW BOOK</button>
+            <div class="form" id="add-book-form">
+                <div class="book-details" id="title">
+                    <div class="label">Title: </div>
+                    <input type="text" id="title-input" />
+                </div>
+                <div class="book-details" id="author">
+                    <div class="label">Author: </div>
+                    <input type="text" id="author-input" />
+                </div>
+                <div class="book-details" id="pages">
+                    <div class="label">Pages: </div>
+                    <input type="text" id="pages-input" />
+                </div>
+                <div class="book-details" id="status">
+                    <div class="label">Finished? </div>
+                    <input type="checkbox" name="status" id="status-check" />
+                </div>
+                <button type="submit" id="submit-btn" onclick="closeForm()">Add book into library</button>
+            </div>
+            <div class="display"></div>
+        </main>
+        <footer>
+
+        </footer>
         <script src="script.js"></script>
     </body>
 </html>
