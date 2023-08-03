@@ -70,6 +70,7 @@ function newBook(){
     titleInput.value = "";
     authorInput.value = "";
     pagesInput.value = "";
+    statusCheck.checked = false;
 }
 
 function openForm(){
