@@ -1,5 +1,10 @@
 let myLibrary = [];
 const submitBtn = document.getElementById("submit-btn");
+const form = document.querySelector("#add-book-form");
+const titleInput = document.querySelector("#title-input");
+const authorInput = document.querySelector("#author-input");
+const pagesInput = document.querySelector("#pages-input");
+const statusCheck = document.querySelector("input[id='status-check']");
 
 submitBtn.addEventListener('click', newBook);
 
@@ -24,41 +29,47 @@ function showBooksOnDisplay(){
         bookCard.classList.add('book-card-container');
         bookDisplay.appendChild(bookCard);
 
+        let removeBtn = document.createElement('span');
+        removeBtn.classList.add('remove');
+        removeBtn.innerHTML = '<i class="uil uil-times" id="remove-btn" onclick="removeBook()"></i>';
+
+        const detailDisplay = document.createElement('div');
+        detailDisplay.classList.add('text-container');
+
         const bookTitle = document.createElement('div');
-        bookTitle.textContent = myLibrary[i].title;
+        bookTitle.textContent = `Title: ${myLibrary[i].title}`;
         bookTitle.classList.add('book-title');
         
         const bookAuthor = document.createElement('div');
-        bookAuthor.textContent = myLibrary[i].author;
+        bookAuthor.textContent = `Author: ${myLibrary[i].author}`;
         bookAuthor.classList.add('book-author');
 
         const bookPages = document.createElement('div');
-        bookPages.textContent = myLibrary[i].pages;
+        bookPages.textContent = `Pages: ${myLibrary[i].pages}`;
         bookPages.classList.add('book-pages');
         
         const bookStatus = document.createElement('div');
-        bookStatus.textContent = myLibrary[i].status;
+        bookStatus.textContent = `Finished reading?: ${myLibrary[i].status}`;
         bookStatus.classList.add('book-status');
 
-        bookCard.appendChild(bookTitle);
-        bookCard.appendChild(bookAuthor);
-        bookCard.appendChild(bookPages);
-        bookCard.appendChild(bookStatus);
+        bookCard.appendChild(removeBtn);
+        bookCard.appendChild(detailDisplay);
+        detailDisplay.appendChild(bookTitle);
+        detailDisplay.appendChild(bookAuthor);
+        detailDisplay.appendChild(bookPages);
+        detailDisplay.appendChild(bookStatus);
     }
 }
 
 function newBook(){
-    const form = document.querySelector("#add-book-form");
-    const titleInput = document.querySelector("#title-input");
-    const authorInput = document.querySelector("#author-input");
-    const pagesInput = document.querySelector("#pages-input");
-    const statusCheck = document.querySelector("input[id='status-check']");
-
     if(statusCheck.checked){
-        addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, true);
+        addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, "Yes");
     }else{
-        addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, false);
+        addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, "No");
     }
+    titleInput.value = "";
+    authorInput.value = "";
+    pagesInput.value = "";
 }
 
 function openForm(){
@@ -69,8 +80,12 @@ function closeForm(){
     document.getElementById("add-book-form").style.display = "none";
 }
 
-addBookToLibrary("Wizard of Oz", "L. Frank Baum", 236, "not read");
-addBookToLibrary("Percy Jackson and the Lightning Thief", "Rick Riordan", 377, "read");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "not read yet");
+function removeBook(){
+    console.log("it works");
+}
+
+addBookToLibrary("Wizard of Oz", "L. Frank Baum", 236, "No");
+addBookToLibrary("Percy Jackson and the Lightning Thief", "Rick Riordan", 377, "Yes");
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "No");
 
 console.log(myLibrary);

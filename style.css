@@ -13,10 +13,10 @@
 :root{
     --default-font: serif-regular;
     --bold-font: serif-bold;
-    --primary-color: rgb(112, 41, 99);
+    --primary-color: rgb(81, 17, 67);
     --secondary-color: rgb(193, 185, 217);
-    --accent-color: rgb(230, 230, 250);
-    --dark-font-color: rgb(112, 41, 99);
+    --accent-color: rgba(243, 234, 246, 255);
+    --dark-font-color: rgb(81, 17, 67);
     --light-font-color: white;
 }
 
@@ -59,9 +59,7 @@ main{
     height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
+    gap: 2rem;
 }
 
 button{
@@ -89,4 +87,19 @@ button{
 
 footer{
     background-color: var(--primary-color);
+}
+
+.remove{
+    color: var(--primary-color);
+    font-size: 25px;
+    padding: 5px;
+}
+
+.text-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
 }
