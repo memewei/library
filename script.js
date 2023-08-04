@@ -21,12 +21,6 @@ function addBookToLibrary(title, author, pages, status){
     showBooksOnDisplay();
 }
 
-// function removeBookFromLibrary(){
-//     myLibrary.splice(index, 1);
-//     showBooksOnDisplay();
-//     console.log("it works");
-// }
-
 function removeBookFromLibrary(i){
     myLibrary.splice(i, 1);
     showBooksOnDisplay();
@@ -59,24 +53,32 @@ function showBooksOnDisplay(){
         bookPages.textContent = `Pages: ${myLibrary[i].pages}`;
         bookPages.classList.add('book-pages');
         
-        const bookStatus = document.createElement('div');
-        bookStatus.textContent = `Finished reading?: ${myLibrary[i].status}`;
-        bookStatus.classList.add('book-status');
+        const toggleStatus = document.createElement('div');
+        let placeholderText = "";
+        if(myLibrary[i].status === true){
+            placeholderText = "Read";
+        }else if(myLibrary[i].status === false){
+            placeholderText = "Not read";
+        }else{
+            return;
+        }
+        toggleStatus.innerHTML = `<button id="toggle-btn" onclick="toggleRead(${i})">${placeholderText}</button>`;
+        toggleStatus.classList.add('toggle-status');
 
         bookCard.appendChild(removeBtn);
         bookCard.appendChild(detailDisplay);
+        bookCard.appendChild(toggleStatus);
         detailDisplay.appendChild(bookTitle);
         detailDisplay.appendChild(bookAuthor);
         detailDisplay.appendChild(bookPages);
-        detailDisplay.appendChild(bookStatus);
     }
 }
 
 function newBook(){
     if(statusCheck.checked){
-        addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, "Yes");
+        addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, true);
     }else{
-        addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, "No");
+        addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, false);
     }
     titleInput.value = "";
     authorInput.value = "";
@@ -96,8 +98,17 @@ function clearDisplay(){
     bookDisplay.innerHTML = "";
 }
 
-addBookToLibrary("Wizard of Oz", "L. Frank Baum", 236, "No");
-addBookToLibrary("Percy Jackson and the Lightning Thief", "Rick Riordan", 377, "Yes");
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, "No");
+function toggleRead(i){
+    if(myLibrary[i].status === true){
+        myLibrary[i].status = false;
+    }else{
+        myLibrary[i].status = true;
+    }
+    showBooksOnDisplay();
+}
+
+addBookToLibrary("Wizard of Oz", "L. Frank Baum", 236, false);
+addBookToLibrary("Percy Jackson and the Lightning Thief", "Rick Riordan", 377, true);
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
 
 console.log(myLibrary);
