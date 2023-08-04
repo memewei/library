@@ -21,6 +21,17 @@ function addBookToLibrary(title, author, pages, status){
     showBooksOnDisplay();
 }
 
+// function removeBookFromLibrary(){
+//     myLibrary.splice(index, 1);
+//     showBooksOnDisplay();
+//     console.log("it works");
+// }
+
+function removeBookFromLibrary(i){
+    myLibrary.splice(i, 1);
+    showBooksOnDisplay();
+}
+
 function showBooksOnDisplay(){
     const bookDisplay = document.querySelector(".display");
     bookDisplay.textContent = "";
@@ -31,7 +42,7 @@ function showBooksOnDisplay(){
 
         let removeBtn = document.createElement('span');
         removeBtn.classList.add('remove');
-        removeBtn.innerHTML = '<i class="uil uil-times" id="remove-btn" onclick="removeBook()"></i>';
+        removeBtn.innerHTML = `<i class="uil uil-times" id="remove-btn" onclick="removeBookFromLibrary(${i})"></i>`;
 
         const detailDisplay = document.createElement('div');
         detailDisplay.classList.add('text-container');
@@ -81,8 +92,8 @@ function closeForm(){
     document.getElementById("add-book-form").style.display = "none";
 }
 
-function removeBook(){
-    console.log("it works");
+function clearDisplay(){
+    bookDisplay.innerHTML = "";
 }
 
 addBookToLibrary("Wizard of Oz", "L. Frank Baum", 236, "No");
