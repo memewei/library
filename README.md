@@ -1,4 +1,2 @@
 # library
-<p>Live Demo
-<a>https://memewei.github.io/library/</a>
-</p>
+[Live Demo](https://memewei.github.io/library/)
